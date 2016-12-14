@@ -1,0 +1,86 @@
+{
+  "id": "http://hmrc.gov.uk/jsonschema/bf-formtemplate#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for a BetterForms Form Template",
+    "type": "object",
+      "properties": {
+        "formTypeId": {
+          "type": "string"
+        },
+        "formName": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "archived": {
+          "type": "boolean"
+        },
+        "characterSet": {
+          "type": "string"
+        },
+        "submitTargets": {
+          "type": "string"
+        },
+        "submitSuccessUrl": {
+          "type": "string"
+        },
+        "submitErrorUrl": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "format": {
+                      "type": "string"
+                    },
+                    "helpText": {
+                      "type": "string"
+                    },
+                    "readonly": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "title",
+              "fields"
+            ]
+          }
+        }
+      },
+      "required": [
+        "formTypeId",
+        "formName",
+        "version",
+        "sections"
+      ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "Form": {
+      "type": "object",
+      "properties": {
+        "formId": {
+          "type": "string"
+        },
+        "formTypeId": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "characterSet": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "value"
+            ]
+          }
+        }
+      },
+      "required": [
+        "formId",
+        "formTypeId",
+        "version",
+        "characterSet",
+        "fields"
+      ]
+    }
+  }
+}

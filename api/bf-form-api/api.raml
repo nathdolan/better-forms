@@ -1,0 +1,68 @@
+#%RAML 0.8
+title: BetterForms Form API
+version: v1
+baseUri: http://base
+schemas:
+    - Form: !include schemas/bf-form-schema.json
+baseUriParameters:
+documentation:
+ - title: Home
+   content: |
+     This is the BetterForms Form service API.
+/forms:
+  get:
+    description: Lists all the forms that you are authorized to work with.  Returns an array of URLs to Forms.
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [
+                "http://base/form/IPT100/0.1.0/187989dd-baa8-4f2f-afce-92239acd47e2/",
+                "http://base/form/IPT100/0.1.0/751d6ef6-909a-419f-86eb-a4d80ce1df01/",
+                "http://base/form/IPT100/0.2.0/a4effc52-1d5f-4f77-857e-78af0fd2f25b/",
+                "http://base/form/LT100/0.1.0/87314683-afbc-4190-bd2e-6b45cd3e842f/"
+              ]
+  post:
+    description: Add a Form of the given type.  You must be authorized to file forms of this type.  Fails if a form with the UUID in the given form already exists in the store.  If successful returns the form's new URL formed of its unique ID.
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              { "success": "http://base/form/IPT100/0.1.0/187989dd-baa8-4f2f-afce-92239acd47e2/" }
+
+  /{formTypeId}:
+    get:
+      description: Lists all the forms of the given type that you are authorized to work with.  Returns an array of URLs to Forms.
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                [
+                  "http://base/form/IPT100/0.1.0/187989dd-baa8-4f2f-afce-92239acd47e2/",
+                  "http://base/form/IPT100/0.1.0/751d6ef6-909a-419f-86eb-a4d80ce1df01/",
+                  "http://base/form/IPT100/0.2.0/a4effc52-1d5f-4f77-857e-78af0fd2f25b/"
+                ]
+    /{version}:
+      get:
+        description: Lists all the forms of the given type and version that you are authorized to work with.  Returns an array of URLs to Forms.
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  [
+                    "http://base/form/IPT100/0.2.0/a4effc52-1d5f-4f77-857e-78af0fd2f25b/"
+                  ]
+      /{id}:
+        get:
+          description: Gets the form with the given ID.  The form must be of the given type and version.
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/bf-form-ipt100.json
+        delete:
+          description: Deletes the form with the given ID.  The form must be of the given type and version.

@@ -1,0 +1,61 @@
+#%RAML 0.8
+title: BetterForms Form API
+version: v1
+#baseUri: http://base
+baseUri: https://mocksvc.mulesoft.com/mocks/337b085c-9aa9-4e2c-b489-b86fbf2f5bc1
+schemas:
+    - FormTemplate: !include schemas/bf-formtemplate-schema.json
+baseUriParameters:
+documentation:
+ - title: Home
+   content: |
+     This is the BetterForms Form Template service API.
+/formtemplates:
+  get:
+    description: Lists all the templates that you are authorized to work with.  Returns an array of URLs to FormTemplates.
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [ 
+                "http://base/formtemplates/IPT100/0.1.0/",
+                "http://base/formtemplates/IPT100/0.2.0/",
+                "http://base/formtemplates/LT100/0.1.0/",
+                "http://base/formtemplates/LT100/0.1.1/"
+              ]
+  post:
+    description: Add a FormTemplate for a new form type or a new version of an existing form type.  Fails if a form template with the ID and version in the given form already exists in the store.  If successful returns the form template's new URL formed of its unique type and version.
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              { "success": "http://base/formtemplates/IPT100/0.1.0/" }
+      
+  /{formTypeId}:
+    get:
+      description: Lists all the versions of the given template ID that you are authorized to work with.  Returns an array of URLs to FormTemplates.
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                [ 
+                  "http://base/formtemplates/IPT100/0.1.0/",
+                  "http://base/formtemplates/IPT100/0.2.0/"                
+                ]
+
+    /{version}:
+      get:
+        description: Gets the FormTemplate of the given type and version, if you are authorized to work with it.
+        responses:
+          200:
+            body:
+              application/json:
+                schema: FormTemplate
+                example: !include examples/bf-formtemplate-ipt100.json
+
+      delete:
+        description: Deletes this FormTemplate if you are authorized to do so.
+            
