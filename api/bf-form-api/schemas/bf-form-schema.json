@@ -4,9 +4,6 @@
     "Form": {
       "type": "object",
       "properties": {
-        "formId": {
-          "type": "string"
-        },
         "formTypeId": {
           "type": "string"
         },
@@ -36,7 +33,6 @@
         }
       },
       "required": [
-        "formId",
         "formTypeId",
         "version",
         "characterSet",
