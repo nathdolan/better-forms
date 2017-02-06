@@ -24,7 +24,7 @@ documentation:
                 "http://base/form/LT100/0.1.0/87314683-afbc-4190-bd2e-6b45cd3e842f/"
               ]
   post:
-    description: Add a Form of the given type.  You must be authorized to file forms of this type.  If successful returns the form's new URL formed of its unique ID.
+    description: Add a Form of the given type.  You must be authorized to file forms of this type.  The form must be schematically valid and of the given type and version.  If successful returns the form's new URL formed of its unique ID.
     responses:
       200:
         body:
@@ -64,6 +64,9 @@ documentation:
               body:
                 application/json:
                   example: !include examples/bf-form-ipt100.json
+        put:
+          description: Updates the form with the given ID. The form must be schematically valid (as per 04. Form Definition JSON schema) and of the given type and version.
+          
         delete:
           description: Deletes the form with the given ID.  The form must be of the given type and version.
 
