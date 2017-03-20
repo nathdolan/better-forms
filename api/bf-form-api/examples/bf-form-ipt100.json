@@ -2,6 +2,11 @@
   "formTypeId": "IPT100",
   "version": "0.1.0",
   "characterSet": "UTF-8",
+  "dmsSubmission": {
+    "customerId": "xxx",
+    "classificationType": "yyy",
+    "businessArea": ""
+  },
   "fields": [
     {
       "id": "iptRegNum",

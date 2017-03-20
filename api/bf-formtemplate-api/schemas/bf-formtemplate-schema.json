@@ -1,86 +1,145 @@
 {
   "id": "http://hmrc.gov.uk/jsonschema/bf-formtemplate#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description": "Schema for a BetterForms Form Template",
-    "type": "object",
+  "title": "FormTemplate",
+  "description": "Schema for a gforms Form Template",
+  "type": "object",
+  "properties": {
+    "formTypeId": {
+      "type": "string"
+    },
+    "formName": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "characterSet": {
+      "type": "string"
+    },
+    "submitTargets": {
+      "type": "string"
+    },
+    "submitSuccessUrl": {
+      "type": "string"
+    },
+    "submitErrorUrl": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/section" }
+    }
+  },
+  "required": [
+    "formTypeId",
+    "formName",
+    "version",
+    "sections"
+  ],
+  "definitions": {
+    "field": {
       "properties": {
-        "formTypeId": {
+        "id": {
           "type": "string"
         },
-        "formName": {
+        "label": {
           "type": "string"
         },
-        "version": {
+        "value": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "helpText": {
+          "type": "string"
+        },
+        "readonly": {
+          "type": "string"
+        },
+        "mandatory": {
+          "type": "string"
+        },
+        "showIf": {
+          "type": "string"
+        },
+        "onFormatErrorText": {
+          "type": "string"
+        },
+        "multiline": {
+          "type": "string"
+        },
+        "multivalue": {
+          "type": "string"
+        },
+        "total": {
+          "type": "string"
+        },
+        "offset": {
+          "type": "string"
+        },
+        "postcodeLookup": {
+          "type": "string"
+        },
+        "promptCopyFrom": {
+          "type": "string"
+        },
+        "promptCopyFromText": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/field"
+          }
+        },
+        "repeats": {
+          "type": "number"
+        },
+        "repeatLabel": {
+          "type": "string"
+        },
+        "repeatAddAnotherText": {
+          "type": "string"
+        },
+        "repeatTitleField": {
+          "type": "string"
+        },
+        "refField": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ]
+    },
+    "section": {
+      "properties": {
+        "title": {
           "type": "string"
         },
         "description": {
           "type": "string"
         },
-        "archived": {
-          "type": "boolean"
-        },
-        "characterSet": {
-          "type": "string"
-        },
-        "submitTargets": {
-          "type": "string"
-        },
-        "submitSuccessUrl": {
-          "type": "string"
-        },
-        "submitErrorUrl": {
-          "type": "string"
-        },
-        "sections": {
+        "fields": {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "string"
-              },
-              "fields": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "label": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    },
-                    "format": {
-                      "type": "string"
-                    },
-                    "helpText": {
-                      "type": "string"
-                    },
-                    "readonly": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "label"
-                  ]
-                }
-              }
-            },
-            "required": [
-              "title",
-              "fields"
-            ]
+            "$ref": "#/definitions/field"
           }
         }
       },
       "required": [
-        "formTypeId",
-        "formName",
-        "version",
-        "sections"
+        "title",
+        "fields"
       ]
+    }
+  }
 }

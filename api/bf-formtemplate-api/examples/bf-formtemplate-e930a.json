@@ -1,0 +1,159 @@
+{
+  "formTypeId": "E930a",
+  "formName": "Excise duty on gas for use as road fuel return",
+  "version": "0.1.0",
+  "description": "",
+  "characterSet": "UTF-8",
+  "dmsSubmission": {
+    "customerId": "xxx",
+    "classificationType": "yyy",
+    "businessArea": ""
+  },
+  "submitSuccessUrl": "https://www.tax.service.gov.uk/forms/form/e930a/success",
+  "submitErrorUrl": "https://www.tax.service.gov.uk/forms/form/e930a/error",
+  "sections": [
+
+    {
+      "title": "Tax return details",
+      "fields": [
+        {
+          "type": "text",
+          "id": "registrationNumber",
+          "label": "Registration Number",
+          "readonly": "true",
+          "value": "$user.regimeId"
+        },
+        {
+          "type": "group",
+          "id": "accountingPeriodGroup",
+          "label": "Accounting period for this return",
+          "fields": [
+            {
+              "type": "date",
+              "id": "startDate",
+              "label": "Start Date",
+              "format": "before $endDate"
+            },
+            {
+              "type": "date",
+              "id": "endDate",
+              "label": "End Date",
+              "format": "after $startDate"
+            }
+          ]
+        }
+      ]
+    },
+
+
+    {
+      "title": "Business details",
+      "fields": [
+        {
+          "type": "text",
+          "id": "businessName",
+          "label": "Business name"
+        },
+        {
+          "type": "address",
+          "id": "businessAddress",
+          "label": "Business Address"
+        },
+        {
+          "type": "text",
+          "id": "businessTelNum",
+          "label": "Telephone number",
+          "format": "telephoneNumber"
+        }
+      ]
+    },
+
+
+    {
+      "title": "Premises details",
+      "description": "Tell us about all premises from which gas is set aside our sent out as road fuel.",
+      "fields": [
+        {
+          "type": "text",
+          "id": "nameOfPremises",
+          "label": "Name of premises"
+        },
+        {
+          "type": "address",
+          "id": "premisesAddress",
+          "label": "Premises address",
+          "promptCopyFrom": "businessAddress",
+          "promptCopyFromText": "Is the address of the premises the same as your business address?"
+        }
+      ]
+    },
+
+
+    {
+      "title": "Additional premises",
+      "fields": [
+        {
+          "type": "choice",
+          "label": "Do you have additional premises?",
+          "id": "haveAdditionalPremises",
+          "format": "yesno"
+        },
+        {
+          "type": "text",
+          "label": "Additional premise name",
+          "id": "additionalPremisesNames",
+          "multivalue": "yes",
+          "showIf": "${haveAdditionalPremises=true}"
+        }
+      ]
+    },
+
+
+    {
+      "title": "Return details",
+      "description": "This return includes fuel for all the premises listed below.",
+      "fields": [
+        {
+          "type": "ref",
+          "id": "premisesAddressRef",
+          "label": "Address of your main premise",
+          "refField": "premisesAddress"
+        },
+        {
+          "type": "text",
+          "id": "naturalGasQuantity",
+          "label": "Natural gas quantity in Kg",
+          "format": "positiveNumber(12, 2)"
+        },
+        {
+          "type": "text",
+          "id": "naturalGasExciseDutyDue",
+          "label": "Natural gas excise duty due",
+          "format": "sterling"
+        },
+        {
+          "type": "text",
+          "id": "otherGasQuantity",
+          "label": "Other gas quantity in Kg",
+          "format": "positiveNumber(12, 2)"
+        },
+        {
+          "type": "text",
+          "id": "otherGasExciseDutyDue",
+          "label": "Other gas excise duty due",
+          "format": "sterling"
+        },
+        {
+            "type": "text",
+            "id": "totalPayable",
+            "label": "Total payable",
+            "format": "sterling",
+            "total": "yes",
+            "readonly": "yes",
+            "value": "${(naturalGasQuantity * naturalGasExciseDutyDue) + (otherGasQuantity * otherGasExciseDutyDue)}"
+        }
+      ]
+    }
+
+  ]
+}

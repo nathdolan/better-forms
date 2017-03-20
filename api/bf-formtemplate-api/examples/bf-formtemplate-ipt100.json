@@ -4,15 +4,20 @@
   "version": "0.1.0",
   "description": "Fill in your insurance premium tax return form online | Llenwch eich ffurflen dreth premiwm yswiriant ar-lein",
   "characterSet": "UTF-8",
-  "submitTargets": "dms",
-  "submitSuccessUrl": "http://www.google.co.uk",
-  "submitErrorUrl": "http://www.yahoo.co.uk",
+  "dmsSubmission": {
+    "customerId": "xxx",
+    "classificationType": "yyy",
+    "businessArea": ""
+  },
+  "submitSuccessUrl": "https://www.tax.service.gov.uk/forms/form/insurance-premium-tax-return/success",
+  "submitErrorUrl": "https://www.tax.service.gov.uk/forms/form/insurance-premium-tax-return/error",
   "sections": [
     {
       "title": "Your details | eich manylion",
       "fields": [
         {
           "id": "iptRegNum",
+          "type": "text",
           "label": "Insurance Premium Tax (IPT) registration number | Treth Premiwm Yswiriant (IPT) rhif cofrestru",
           "readonly": "true",
           "mandatory": "true"
@@ -25,16 +30,19 @@
       "fields": [
         {
           "id": "firstName",
+          "type": "text",
           "label": "Your first name | Eich enw cyntaf",
           "mandatory": "true"
         },
         {
           "id": "lastName",
+          "type": "text",
           "label": "Your last name | Eich enw olaf",
           "mandatory": "true"
         },
         {
           "id": "telephoneNumber",
+          "type": "text",
           "label": "Telephone number | Eich enw olaf",
           "helpText": "If this is a UK landline or an overseas number, you must include the area or dialling code. | Os yw hyn yn llinell tir neu rif tramor y DU, rhaid i chi gynnwys yr ardal neu'r cod deialu.",
           "format": "telephoneNumber",
@@ -42,6 +50,7 @@
         },
         {
           "id": "status",
+          "type": "text",
           "label": "Status | statws",
           "helpText": "For example: director, company secretary, agent | Er enghraifft: gyfarwyddwr, ysgrifennydd cwmni, asiant",
           "mandatory": "true"
@@ -53,20 +62,28 @@
       "fields": [
         {
           "id": "nameOfBusiness",
+          "type": "text",
           "label": "Name of business | Enw'r busnes",
           "mandatory": "true"
         },
         {
-          "id": "accountingPeriodStartDate",
-          "label": "Accounting period start date | Dyddiad dechrau'r cyfnod cyfrifeg",
-          "format": "date",
-          "mandatory": "true"
-        },
-        {
-          "id": "accountingPeriodEndDate",
-          "label": "Accounting period end date | Dyddiad diwedd cyfnod Cyfrifeg",
-          "format": "date",
-          "mandatory": "true"
+          "id": "accountingPeriodsGroup",
+          "type": "group",
+          "label": "Accounting Periods | Cyfnodau Cyfrifo",
+          "fields": [
+            {
+              "id": "accountingPeriodStartDate",
+              "type": "date",
+              "label": "Accounting period start date | Dyddiad dechrau'r cyfnod cyfrifeg",
+              "mandatory": "true"
+            },
+            {
+              "id": "accountingPeriodEndDate",
+              "type": "date",
+              "label": "Accounting period end date | Dyddiad diwedd cyfnod Cyfrifeg",
+              "mandatory": "true"
+            }
+          ]
         }
       ]
     },
@@ -75,6 +92,7 @@
       "fields": [
         {
           "id": "standardRateIPTDueForThisPeriod",
+          "type": "text",
           "label": "Standard rate IPT due for this period | Cyfradd safonol IPT sy'n ddyledus am y cyfnod hwn",
           "helpText": "You should deduct any standard credits which are due to you | Dylech ddidynnu unrhyw gredydau safonol sydd yn ddyledus i chi",
           "format": "sterling",
@@ -82,6 +100,7 @@
         },
         {
           "id": "higherRateIPTDueForThisPeriod",
+          "type": "text",
           "label": "Higher rate IPT due for this period | Cyfradd uwch IPT sy'n ddyledus am y cyfnod hwn",
           "format": "sterling",
           "mandatory": "true"
