@@ -61,7 +61,7 @@
         "helpText": {
           "type": "string"
         },
-        "readonly": {
+        "viewMode": {
           "type": "string"
         },
         "mandatory": {

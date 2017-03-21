@@ -19,7 +19,7 @@
           "id": "iptRegNum",
           "type": "text",
           "label": "Insurance Premium Tax (IPT) registration number | Treth Premiwm Yswiriant (IPT) rhif cofrestru",
-          "readonly": "true",
+          "viewMode": "readonly",
           "mandatory": "true"
         }
       ]

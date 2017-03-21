@@ -2,7 +2,7 @@
   "formTypeId": "E930a",
   "formName": "Excise duty on gas for use as road fuel return",
   "version": "0.1.0",
-  "description": "",
+  "description": "Fill in your excise duty form for gas for use as road fuel online",
   "characterSet": "UTF-8",
   "dmsSubmission": {
     "customerId": "xxx",
@@ -20,7 +20,7 @@
           "type": "text",
           "id": "registrationNumber",
           "label": "Registration Number",
-          "readonly": "true",
+          "viewModel": "readonly",
           "value": "$user.regimeId"
         },
         {
@@ -114,10 +114,11 @@
       "description": "This return includes fuel for all the premises listed below.",
       "fields": [
         {
-          "type": "ref",
+          "type": "address",
           "id": "premisesAddressRef",
           "label": "Address of your main premise",
-          "refField": "premisesAddress"
+          "value": "$premisesAddress",
+          "viewMode": "info"
         },
         {
           "type": "text",
@@ -149,7 +150,7 @@
             "label": "Total payable",
             "format": "sterling",
             "total": "yes",
-            "readonly": "yes",
+            "viewMode": "readonly",
             "value": "${(naturalGasQuantity * naturalGasExciseDutyDue) + (otherGasQuantity * otherGasExciseDutyDue)}"
         }
       ]
