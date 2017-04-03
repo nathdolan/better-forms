@@ -1,14 +1,14 @@
 #%RAML 0.8
-title: BetterForms Form API
+title: GForms Form API
 version: v1
 baseUri: http://base
 schemas:
-    - Form: !include schemas/bf-form-schema.json
+    - Form: !include schemas/gf-form-schema.json
 baseUriParameters:
 documentation:
  - title: Home
    content: |
-     This is the BetterForms Form service API.
+     This is the GForms Form service API.
 /forms:
   get:
     description: Lists all the forms that you are authorized to work with.  Returns an array of URLs to Forms.
@@ -63,10 +63,10 @@ documentation:
             200:
               body:
                 application/json:
-                  example: !include examples/bf-form-ipt100.json
+                  example: !include examples/gf-form-ipt100.json
         put:
           description: Updates the form with the given ID. The form must be schematically valid (as per 04. Form Definition JSON schema) and of the given type and version.
-          
+
         delete:
           description: Deletes the form with the given ID.  The form must be of the given type and version.
 
