@@ -1,26 +1,27 @@
 {
   "formTypeId": "E930a",
-  "formName": "Excise duty on gas for use as road fuel return",
+  "formName": "Gas for use as road fuel",
   "version": "0.1.0",
   "description": "Fill in your excise duty form for gas for use as road fuel online",
   "characterSet": "UTF-8",
-  "dmsSubmission": {
-    "customerId": "xxx",
-    "classificationType": "yyy",
-    "businessArea": ""
-  },
-  "submitSuccessUrl": "https://www.tax.service.gov.uk/forms/form/e930a/success",
-  "submitErrorUrl": "https://www.tax.service.gov.uk/forms/form/e930a/error",
+  "destinations":["hmrcDms"],
+  "destinationConfig": [
+    {
+      "destination": "hmrcDms",
+      "customerId": "xxx",
+      "classificationType": "yyy",
+      "businessArea": ""
+    }
+  ],
   "sections": [
 
     {
-      "title": "Tax return details",
+      "title": "Enter the time period for this return",
       "fields": [
         {
-          "type": "text",
+          "type": "info",
           "id": "registrationNumber",
-          "label": "Registration Number",
-          "viewModel": "readonly",
+          "submitMode": "readonly",
           "value": "$user.regimeId"
         },
         {
@@ -45,7 +46,6 @@
       ]
     },
 
-
     {
       "title": "Business details",
       "fields": [
@@ -68,7 +68,6 @@
       ]
     },
 
-
     {
       "title": "Premises details",
       "description": "Tell us about all premises from which gas is set aside our sent out as road fuel.",
@@ -87,7 +86,6 @@
         }
       ]
     },
-
 
     {
       "title": "Additional premises",
@@ -108,7 +106,6 @@
       ]
     },
 
-
     {
       "title": "Return details",
       "description": "This return includes fuel for all the premises listed below.",
@@ -118,7 +115,7 @@
           "id": "premisesAddressRef",
           "label": "Address of your main premise",
           "value": "$premisesAddress",
-          "viewMode": "info"
+          "submitMode": "info"
         },
         {
           "type": "text",
@@ -150,7 +147,7 @@
             "label": "Total payable",
             "format": "sterling",
             "total": "yes",
-            "viewMode": "readonly",
+            "submitMode": "readonly",
             "value": "${(naturalGasQuantity * naturalGasExciseDutyDue) + (otherGasQuantity * otherGasExciseDutyDue)}"
         }
       ]

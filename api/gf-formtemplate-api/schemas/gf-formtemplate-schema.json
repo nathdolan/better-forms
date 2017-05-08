@@ -23,14 +23,11 @@
     "characterSet": {
       "type": "string"
     },
-    "submitTargets": {
-      "type": "string"
+    "destinations": {
+      "type": "array"
     },
-    "submitSuccessUrl": {
-      "type": "string"
-    },
-    "submitErrorUrl": {
-      "type": "string"
+    "destinationConfig": {
+      "type": "array"
     },
     "sections": {
       "type": "array",
@@ -61,13 +58,13 @@
         "helpText": {
           "type": "string"
         },
-        "viewMode": {
+        "submitMode": {
           "type": "string"
         },
         "mandatory": {
           "type": "string"
         },
-        "showIf": {
+        "includeIf": {
           "type": "string"
         },
         "onFormatErrorText": {
@@ -103,6 +100,9 @@
         "repeats": {
           "type": "number"
         },
+        "repeatsMin": {
+          "type": "number"
+        },
         "repeatLabel": {
           "type": "string"
         },
@@ -110,9 +110,6 @@
           "type": "string"
         },
         "repeatTitleField": {
-          "type": "string"
-        },
-        "refField": {
           "type": "string"
         }
       },
@@ -128,6 +125,15 @@
         },
         "description": {
           "type": "string"
+        },
+        "includeIf": {
+          "type": "string"
+        },
+        "repeats": {
+          "type": "number"
+        },
+        "repeatsMin": {
+          "type": "number"
         },
         "fields": {
           "type": "array",
